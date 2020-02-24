@@ -1,13 +1,5 @@
 #!/usr/bin/python
 
-# findIndexOfUpperCase is a function that takes a string
-# returns the index of the first upper-cased letter; -1 if no upper-case letter is found.
-def findIndexOfUpperCase(string):
-    for i in range(len(string)):
-        if string[i].isUpper():
-            return i
-    return -1
-
 # findPersonKeywords is a function that takes a list of words (or user's "chat" in this context)
 # returns the list of person names in the given list
 def findPersonKeywords(words):
