@@ -61,11 +61,9 @@ def findLocationKeywords(words):
 # Returns a dictionary data type with the list of people's names and locations.
 def PersonOrLocation(string):
     words = string.lstrip().rstrip().split() # removes unnecessary left/right spaces and returns a list of words in the string
-
-    print("Persons: \t" + str(findPersonKeywords(words)))
-    print("Locations: \t" + str(findLocationKeywords(words)))
+    
     return {'Persons': findPersonKeywords(words), 'Locations': findLocationKeywords(words)}
 
 while True:
     s = input("\n\nEnter sentence to find the list of person names >>> ")
-    PersonOrLocation(s)
+    print(PersonOrLocation(s))
