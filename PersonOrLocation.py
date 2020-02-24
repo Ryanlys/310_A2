@@ -28,7 +28,7 @@ def findPersonKeywords(words):
                 persons.append(words[toIndex + 2])
             else:
                 personName = words[toIndex + 1]
-                personName = personName[0].capitalize()
+                personName = personName.capitalize()
                 if personName not in persons:
                     persons.append(personName)
             
