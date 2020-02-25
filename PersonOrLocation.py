@@ -8,6 +8,10 @@ def findPersonKeywords(words):
     if 'my' in words:
         myIndex = words.index('my')
         persons.append(words[myIndex + 1])
+
+    if 'met' in words:
+        myIndex = words.index('met')
+        persons.append(words[myIndex + 1])
         
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
