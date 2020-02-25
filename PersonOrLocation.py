@@ -1,3 +1,4 @@
+import Chat
 #!/usr/bin/python
 
 # findPersonKeywords is a function that takes a list of words (or user's "chat" in this context)
@@ -49,14 +50,24 @@ def findLocationKeywords(words):
             
     return locations
 
+def determineBranch(words):
+    if 'depressed' in words:
+        branch = 'depressed'
+        return branch
+    if 'alright' in words:
+        branch = 'neutral'
+        return branch
+    if 'not' in words:
+        notIndex = words.index('not')
+        if (words[notIndex+1] == 'good') or (words[notIndex+1]=='well'):
+            branch = 'depressed'
+            return branch
+    branch = Chat.getBranch()
+    if not branch:
+        branch = 'general'
+    return branch
 # PersonOrLocation is a function that takes a string (or user's "chat" in this context)
 # Returns a dictionary data type with the list of people's names and locations.
 def PersonOrLocation(string):
-    words = string.lstrip().rstrip().split() # removes unnecessary left/right spaces and returns a list of words in the string
-    
-    return {'Persons': findPersonKeywords(words), 'Locations': findLocationKeywords(words)}
-
-'''
-while True:
-    s = input("\n\nEnter sentence to find the list of person names >>> ")
-    print(PersonOrLocation(s))'''
+    words = string.split() # removes unnecessary left/right spaces and returns a list of words in the string
+    return [findPersonKeywords(words),findLocationKeywords(words)]

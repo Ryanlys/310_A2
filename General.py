@@ -1,17 +1,50 @@
 import random
 
-depressed = [
-    "123",
-    "123"
+depressedPerson = [
+    "dperson \n",
+    "dperson \n"
+]
+depressedPlace = [
+    "dplace \n",
+    "dplace \n"
+]
+depressedGen = [
+    "dgen \n"
+]
+neutralPerson = [
+    "nperson \n",
+    "nperson \n"
+]
+neutralPlace = [
+    "nplace \n",
+    "nplace \n"
+]
+neutralGen= [
+    "ngen \n"
+]
+general = [
+    "this is general \n",
+    "this is gen \n"
 ]
 
-neutral = [
-    "123",
-    "123"
-]
-
-def chat(branch):
+def response(branch, type): #type is person or place
     if branch == 'depressed':
-        return depressed[random.randint(0, len(depressed)-1)]
+        if type == 'person':
+            return depressedPerson[random.randint(0,len(depressedPerson)-1)]
+        else:
+            return depressedPlace[random.randint(0, len(depressedPerson)-1)]
+    elif branch == 'neutral':
+       if type == 'person':
+           return neutralPerson[random.randint(0, len(depressedPerson)-1)]
+       else:
+            return neutralPlace[random.randint(0, len(depressedPerson)-1)]
     else:
-        return neutral[random.randint(0, len(depressed)-1)]
+        return general[random.randint(0, len(general)-1)]
+
+def genResponse(branch): #generic response
+    if branch == 'depressed':
+        return depressedGen[random.randint(0,len(depressedGen)-1)]
+    elif branch == 'neutral':
+        return neutralGen[random.randint(0,len(neutralGen)-1)]
+    else:
+        return general[random.randint(0,len(general)-1)]
