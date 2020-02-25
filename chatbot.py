@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import PersonOrLocation
+import questionBuilder
 
 class Category:
     def __init__(self, categoryName):
@@ -20,6 +21,24 @@ class Category:
     def __repr__(self):
         return self.categoryName
 
+class Relationship:
+    def __init__(self, relationshipName):
+        self.relationshipName = relationshipName
+        self.keywords = []
+
+    def __repr__(self):
+        return self.relationshipName
+
+class Person:
+    def __init__(self, personName):
+        self.personName = personName
+        self.isIntroduced = False   # This variable tells the program if the user has introduced the person to the program
+        self.relationshipStatus = None
+        self.lengthOfRelationship = None
+
+    def __repr__(self):
+        return self.personName
+
 # Add the Categories into the "database"
 happyCategory = Category("Happy")
 neutralCategory = Category("Neutral")
@@ -30,16 +49,36 @@ happyCategory.addKeywords(["happy", "glad", "liked", "like", "amazing", "fun", "
 neutralCategory.addKeywords(["alright", "okay", "fine"])
 depressedCategory.addKeywords(["sad", "suicidal", "depressed", "stressed", "lonely", "gloomy", "bad", "awful", "terrible"])
 
-categories = [neutralCategory, depressedCategory, unknownMoodCategory, happyCategory]
+categories = [neutralCategory, depressedCategory, happyCategory]
 
+persons = []
+locations = []
+matchingCategories = []
+
+name = input("\n\nHey there, it's bot. Mind identifying yourself? What should I call you?\n\t> ")
+name = name.lstrip().rstrip().split(" ")[-1] # Extracts the last word in the sentence
+sentence = input("Hello " + name + ", how are ya feeling today?\n\t> ")
+                      
 ### Testing
 while True:
-    sentence = input("\n\nEnter a sentence to find out which category/categories it falls in >>> ").lower().split(" ")
+    words = sentence.split(" ")
     matchingCategories = []
     
-    for word in sentence:
+    for word in words:
         for category in categories:
             if word in category.keywords:
-                matchingCategories.append(category)
+                matchingCategories.append(category.categoryName)
 
-    print(matchingCategories)
+    for personName in PersonOrLocation.PersonOrLocation(sentence)['Persons']:
+        if personName not in persons:
+            persons.append(Person(personName))
+
+    for locationName in PersonOrLocation.PersonOrLocation(sentence)['Locations']:
+        if locationName not in persons:
+            locations.append(locationName)
+
+    print ("Mood: ", matchingCategories)
+    print ("Locations: ", locations)
+    print ("Persons: ", persons)
+    sentence = input("\n"+questionBuilder.buildQuestion(matchingCategories, locations, persons) + "\n\t> ")
+    
