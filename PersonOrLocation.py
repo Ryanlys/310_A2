@@ -9,7 +9,7 @@ def findPersonKeywords(words):
     if 'my' in words:
         myIndex = words.index('my')
         persons.append(words[myIndex + 1])
-        
+
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
 
@@ -51,11 +51,14 @@ def findLocationKeywords(words):
     return locations
 
 def determineBranch(words):
-    if 'depressed' in words:
+    if 'depressed' or 'sad' or 'unhappy' or 'not well'  or 'unwell' or 'miserable' or 'upset' or 'discouraged' or 'broken-hearted' or 'down' or 'glum' in  words:
         branch = 'depressed'
         return branch
-    if 'alright' in words:
+    if 'alright' or 'okay' or 'fine' or 'so-so'or 'happy'or 'content'or 'cheery'or 'blessed'or 'thrilled' in words:
         branch = 'neutral'
+        return branch
+    if 'suicidal' in words:
+        branch = 'suicidal'
         return branch
     if 'not' in words:
         notIndex = words.index('not')
