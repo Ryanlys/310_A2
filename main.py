@@ -1,6 +1,6 @@
 import General,PersonOrLocation,Chat
 
-words = input('Hi. I am bot. What can I help you with today? \n')
+words = input('Hey, what did you want to talk about? \n')
 branch = PersonOrLocation.determineBranch(words.split())
 Chat.setBranch(branch)
 Chat.Chat(words)
