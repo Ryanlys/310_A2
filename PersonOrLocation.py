@@ -21,7 +21,7 @@ def findPersonKeywords(words):
             if personName not in persons:
                 persons.append(personName)
 
-    if 'to' in words:
+    '''if 'to' in words:
         toIndex = words.index('to')
 
         if (words[toIndex - 1].lower() != 'went') and (words[toIndex - 1].lower() != 'how') and (words[toIndex - 1].lower() != 'go') and (words[toIndex - 1].lower() != 'visit'):
@@ -31,7 +31,7 @@ def findPersonKeywords(words):
                 personName = words[toIndex + 1]
                 personName = personName.capitalize()
                 if personName not in persons:
-                    persons.append(personName)
+                    persons.append(personName) '''
             
     return persons
 
@@ -42,7 +42,6 @@ def findLocationKeywords(words):
 
     if 'to' in words:
         toIndex = words.index('to')
-
         if ((words[toIndex - 1].lower() == 'went') or (words[toIndex - 1].lower() == 'go') or (words[toIndex - 1].lower() == 'goes') or (words[toIndex - 1].lower() == 'visit') or (words[toIndex - 1].lower() == 'visits')) and (words[toIndex - 1].lower() != 'how'):
             locationName = words[toIndex + 1].capitalize()
             if locationName not in locations:
@@ -51,10 +50,13 @@ def findLocationKeywords(words):
     return locations
 
 def determineBranch(words):
-    if 'depressed' or 'sad' or 'unhappy' or 'not well'  or 'unwell' or 'miserable' or 'upset' or 'discouraged' or 'broken-hearted' or 'down' or 'glum' in  words:
+    depressedWords = ['stress','stressing','depressed','lonely','sad','unhappy', 'not well', 'unwell', 'miserable', 'upset', 'discouraged','broken-hearted','down', 'glum']
+    neutralWords = ['good','alright','okay', 'fine', 'so-so', 'happy', 'content', 'cheery', 'blessed', 'thrilled']
+
+    if (any(string in words for string in depressedWords)):
         branch = 'depressed'
         return branch
-    if 'alright' or 'okay' or 'fine' or 'so-so'or 'happy'or 'content'or 'cheery'or 'blessed'or 'thrilled' in words:
+    if (any(string in words for string in neutralWords)):
         branch = 'neutral'
         return branch
     if 'suicidal' in words:
@@ -62,13 +64,15 @@ def determineBranch(words):
         return branch
     if 'not' in words:
         notIndex = words.index('not')
-        if (words[notIndex+1] == 'good') or (words[notIndex+1]=='well'):
+        if (words[notIndex+1] == "good") or (words[notIndex+1] == "well") or (words[notIndex+1] == "happy"):
             branch = 'depressed'
             return branch
+
     branch = Chat.getBranch()
     if not branch:
         branch = 'general'
     return branch
+
 # PersonOrLocation is a function that takes a string (or user's "chat" in this context)
 # Returns a dictionary data type with the list of people's names and locations.
 def PersonOrLocation(string):

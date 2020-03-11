@@ -1,70 +1,122 @@
 import random
 
 depressedPerson = [
-    "Have you told anyone else about how you're feeling? \n",
-    "Have you talked to a therapist about this in the past? \n",
-    "Does anyone close to you know about your situation?\n",
-    "Have you tried seeking medical attention?\n"
-    "Do you think it will help if you seek medical attention?\n"
+    "Tell me about name \n",
+    "Have you talked to name \n",
+    "Does name know about how you are feeling? \n"
 ]
 
 suicidalPerson = [
-    "Okay, do you want me to give you the number for a therapist in your area\n",
-    "I think it would be better if you talk to an actual psychiatrist face to face\n",
-    "okay here are the list of numbers for therapists in your area:\n"
+    "I'm sorry to hear that, but I may not be the best person to talk to. A psychiatrist at (764)-122 584 might help "+
+    "you more.\n",
+    "I think it would be better if you talk to an actual psychiatrist face to face. \n"
 ]
 depressedPlace = [
     "What did you do there? \n",
     "Why did you go there? \n",
     "Who did you go with? \n",
-    "What made you you go there in the first place?"
+    "What made you you go there in the first place? \n"
 ]
 depressedGen = [
     "Alright, tell me more. \n",
     "What makes you feel this way? \n",
-    "What else do you think would help you at this point ? \n"
-
+    "What else do you think would help you at this point? \n",
+    "Go on, I'm listening. \n",
+    "I'm here. Tell me more. \n",
+    "Has there been anything else bothering you lately? \n",
+    "Anything else on your mind? \n",
+    "Why is that? \n",
+    "That's alright, tell me more. \n"
 
 ]
 neutralPerson = [
-    "How long have you known this person? \n",
-    "Has this person helped in anyway ? \n"
+    "How long have you known name ? \n",
+    "Tell me about name \n",
+    "How is name ?\n",
 ]
 neutralPlace = [
-    "What did you do there ? \n",
-    "Where else did you go ? \n"
+    "What did you do there? \n",
+    "How was it? \n",
+    "Did you like it? \n",
+    "Would you recommend it?\n",
+    "That sounds niceeee \n"
 ]
 neutralGen= [
-    "And how is that been helping you? \n"
-    "That's good to know. tell me more about how how you've been feeling lately\n?"
-    "That's good. have you thought about spending more time outside with friends and family?\n"
-    "That's nice to know. Do you feel lonely?"
+    ":) Tell me more! \n",
+    "That's good to know. tell me more about how how you've been feeling lately?\n",
+    "That's good. have you thought about spending more time outside with friends and family?\n",
+    "That's nice to know. Do you feel lonely? \n"
 ]
 general = [
-    "alright, do you want to tell me more about it\n",
-    "okay, do you want to elaborate on that ?\n"
+    "Tell me more about it\n",
+    "What else?\n"
 ]
+global lastSentence
+lastSentence=""
 
-def response(branch, type): #type is person or place
+def response(branch, type, name): #type is person or place
     if branch == 'depressed':
         if type == 'person':
-            return depressedPerson[random.randint(0,len(depressedPerson)-1)]
+            output = depressedPerson[random.randint(0,len(depressedPerson)-1)]
+            while (output == getLastSentence()):
+                output = depressedPerson[random.randint(0,len(depressedPerson)-1)]
+            setLastSentence(output)
+            return output.replace("name",name)
         else:
-            return depressedPlace[random.randint(0, len(depressedPerson)-1)]
+            output = depressedPlace[random.randint(0, len(depressedPlace)- 1)]
+            while (output == getLastSentence()):
+                output = depressedPlace[random.randint(0, len(depressedPlace) - 1)]
+            setLastSentence(output)
+            return output
     elif branch == 'neutral':
        if type == 'person':
-           return neutralPerson[random.randint(0, len(depressedPerson)-1)]
+           output = neutralPerson[random.randint(0, len(neutralPerson) - 1)]
+           while (output == getLastSentence()):
+               output = neutralPerson[random.randint(0, len(neutralPerson) - 1)]
+           setLastSentence(output)
+           return output.replace("name",name)
        else:
-            return neutralPlace[random.randint(0, len(depressedPerson)-1)]
+           output = neutralPlace[random.randint(0, len(neutralPlace) - 1)]
+           while (output == getLastSentence()):
+               output = neutralPlace[random.randint(0, len(neutralPlace) - 1)]
+           setLastSentence(output)
+           return output
     else:
-        return general[random.randint(0, len(general)-1)]
+        output = general[random.randint(0, len(general) - 1)]
+        while (output == getLastSentence()):
+            output = general[random.randint(0, len(general) - 1)]
+        setLastSentence(output)
+        return output
 
 def genResponse(branch): #generic response
     if branch == 'depressed':
-        return depressedGen[random.randint(0,len(depressedGen)-1)]
+        output = depressedGen[random.randint(0, len(depressedGen) - 1)]
+        while (output == getLastSentence()):
+            output = depressedGen[random.randint(0, len(depressedGen) - 1)]
+        setLastSentence(output)
+        return output
     elif branch == 'suicidal':
-        return suicidalPerson[random.randint(0,len(suicidalPerson)-1)]
+        output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
+        while (output == getLastSentence()):
+            output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
+        setLastSentence(output)
+        return output
     elif branch == 'neutral':
-        return neutralGen[random.randint(0,len(neutralGen)-1)]
+        output = neutralGen[random.randint(0, len(neutralGen) - 1)]
+        while (output == getLastSentence()):
+            output = neutralGen[random.randint(0, len(neutralGen) - 1)]
+        setLastSentence(output)
+        return output
     else:
-        return general[random.randint(0,len(general)-1)]
+        output = general[random.randint(0, len(general) - 1)]
+        while (output == getLastSentence()):
+            output = general[random.randint(0, len(general) - 1)]
+        setLastSentence(output)
+        return output
+
+def setLastSentence(sentence):
+    global lastSentence
+    lastSentence = sentence
+
+def getLastSentence():
+    return lastSentence
