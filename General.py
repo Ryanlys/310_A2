@@ -1,55 +1,55 @@
 import random
 
 depressedPerson = [
-    "Tell me about name \n",
-    "Have you talked to name \n",
-    "Does name know about how you are feeling? \n"
+    "Tell me about name \n >",
+    "Have you talked to name ?\n >",
+    "Does name know about how you are feeling? \n>"
 ]
 
 suicidalPerson = [
     "I'm sorry to hear that, but I may not be the best person to talk to. A psychiatrist at (764)-122 584 might help "+
-    "you more.\n",
-    "I think it would be better if you talk to an actual psychiatrist face to face. \n"
+    "you more.\n >",
+    "I think it would be better if you talk to an actual psychiatrist face to face. \n >"
 ]
 depressedPlace = [
-    "What did you do there? \n",
-    "Why did you go there? \n",
-    "Who did you go with? \n",
-    "What made you you go there in the first place? \n"
+    "What did you do there? \n >",
+    "Why did you go there? \n >",
+    "Who did you go with? \n >",
+    "What made you you go there in the first place? \n >"
 ]
 depressedGen = [
-    "Alright, tell me more. \n",
-    "What makes you feel this way? \n",
-    "What else do you think would help you at this point? \n",
-    "Go on, I'm listening. \n",
-    "I'm here. Tell me more. \n",
-    "Has there been anything else bothering you lately? \n",
-    "Anything else on your mind? \n",
-    "Why is that? \n",
-    "That's alright, tell me more. \n"
+    "Alright, tell me more. \n >",
+    "What makes you feel this way? \n >",
+    "What else do you think would help you at this point? \n >",
+    "Go on, I'm listening. \n >",
+    "I'm here. Tell me more. \n >",
+    "Has there been anything else bothering you lately? \n > ",
+    "Anything else on your mind? \n >",
+    "Why is that? \n >",
+    "That's alright, tell me more. \n >"
 
 ]
 neutralPerson = [
-    "How long have you known name ? \n",
-    "Tell me about name \n",
-    "How is name ?\n",
+    "How long have you known name ? \n >",
+    "Tell me about name \n >",
+    "How is name ?\n >",
 ]
 neutralPlace = [
-    "What did you do there? \n",
-    "How was it? \n",
-    "Did you like it? \n",
-    "Would you recommend it?\n",
-    "That sounds niceeee \n"
+    "What did you do there? \n >",
+    "How was name? \n >",
+    "Did you like name? \n >",
+    "Would you recommend it? name\n >",
+    "That sounds niceeee \n >"
 ]
 neutralGen= [
-    ":) Tell me more! \n",
-    "That's good to know. tell me more about how how you've been feeling lately?\n",
-    "That's good. have you thought about spending more time outside with friends and family?\n",
-    "That's nice to know. Do you feel lonely? \n"
+    ":) Tell me more! \n >",
+    "Cool, you been doing anything else lately?\n >",
+    "I saw you at the bus stop today, did you go anywhere else?\n >",
+    "That's nice to know. Have you been to any new restaurants lately? \n >"
 ]
 general = [
-    "Tell me more about it\n",
-    "What else?\n"
+    "Tell me more about it\n >",
+    "What else?\n >"
 ]
 global lastSentence
 lastSentence=""
@@ -80,7 +80,7 @@ def response(branch, type, name): #type is person or place
            while (output == getLastSentence()):
                output = neutralPlace[random.randint(0, len(neutralPlace) - 1)]
            setLastSentence(output)
-           return output
+           return output.replace("name",name)
     else:
         output = general[random.randint(0, len(general) - 1)]
         while (output == getLastSentence()):
