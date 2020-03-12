@@ -8,30 +8,24 @@ def findPersonKeywords(words):
 
     if 'my' in words:
         myIndex = words.index('my')
-        persons.append(words[myIndex + 1])
+        if (words[myIndex+1] !=  "roommate" and words[myIndex+1] != "friend" and words[myIndex+1] != "classmate"):
+            persons.append(words[myIndex + 1])
 
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
 
-        if words[withIndex + 1].lower() == 'my' and words[withIndex + 2] not in persons:
-            persons.append(words[withIndex + 2])
-        else:
-            personName = words[withIndex + 1]
-            personName = personName.capitalize()
-            if personName not in persons:
-                persons.append(personName)
+        if words[withIndex + 1].lower() == 'my' and words[withIndex + 2].lower() != 'him' and words[withIndex + 2].lower() != 'her' and words[withIndex + 2].lower() != 'them':
+            if words[withIndex+2] not in persons:
+                persons.append(words[withIndex+2])
+
 
     '''if 'to' in words:
         toIndex = words.index('to')
 
-        if (words[toIndex - 1].lower() != 'went') and (words[toIndex - 1].lower() != 'how') and (words[toIndex - 1].lower() != 'go') and (words[toIndex - 1].lower() != 'visit'):
-            if words[toIndex + 1].lower() == 'my' and words[toIndex + 2] not in persons:
-                persons.append(words[toIndex + 2])
-            else:
-                personName = words[toIndex + 1]
-                personName = personName.capitalize()
-                if personName not in persons:
-                    persons.append(personName) '''
+        if (words[toIndex - 1].lower() != 'went') and (words[toIndex - 1].lower() != 'how') and (words[toIndex - 
+        1].lower() != 'go') and (words[toIndex - 1].lower() != 'visit'): if words[toIndex + 1].lower() == 'my' and 
+        words[toIndex + 2] not in persons: persons.append(words[toIndex + 2]) else: personName = words[toIndex + 1] 
+        personName = personName.capitalize() if personName not in persons: persons.append(personName) '''
             
     return persons
 
@@ -43,10 +37,19 @@ def findLocationKeywords(words):
     if 'to' in words:
         toIndex = words.index('to')
         if ((words[toIndex - 1].lower() == 'went') or (words[toIndex - 1].lower() == 'go') or (words[toIndex - 1].lower() == 'goes') or (words[toIndex - 1].lower() == 'visit') or (words[toIndex - 1].lower() == 'visits')) and (words[toIndex - 1].lower() != 'how'):
-            locationName = words[toIndex + 1].capitalize()
-            if locationName not in locations:
-                locations.append(locationName)
-            
+            if (words[toIndex+1] == "the"):
+                locationName = words[toIndex + 2].capitalize()
+                if locationName not in locations:
+                    locations.append(locationName)
+            elif (words[toIndex+1]=="to"):
+                if (words[toIndex + 1] == "the"):
+                    locationName = words[toIndex + 2].capitalize()
+                    if locationName not in locations:
+                        locations.append(locationName)
+            else:
+                locationName = words[toIndex + 1].capitalize()
+                if locationName not in locations:
+                    locations.append(locationName)
     return locations
 
 def determineBranch(words):

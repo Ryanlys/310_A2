@@ -6,7 +6,7 @@ def Chat(words): #type is person or place
     branch = PersonOrLocation.determineBranch(words.split())
     keywords = PersonOrLocation.PersonOrLocation(words)
 
-    if("bye" in words):
+    if("bye" in words or "that's it" in words):
         print("It was nice talking to you :)")
         sys.exit()
 
