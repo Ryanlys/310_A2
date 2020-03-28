@@ -29,16 +29,6 @@ class Relationship:
     def __repr__(self):
         return self.relationshipName
 
-class Person:
-    def __init__(self, personName):
-        self.personName = personName
-        self.isIntroduced = False   # This variable tells the program if the user has introduced the person to the program
-        self.relationshipStatus = None
-        self.lengthOfRelationship = None
-
-    def __repr__(self):
-        return self.personName
-
 # Add the Categories into the "database"
 happyCategory = Category("Happy")
 neutralCategory = Category("Neutral")
