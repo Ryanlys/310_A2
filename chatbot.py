@@ -2,6 +2,7 @@
 
 import PersonOrLocation
 import questionBuilder
+import pythonptk
 
 class Category:
     def __init__(self, categoryName):

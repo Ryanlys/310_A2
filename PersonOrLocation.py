@@ -20,25 +20,25 @@ def findPersonKeywords(words):
     if 'my' in words:
         myIndex = words.index('my')
         persons.append(words[myIndex + 1])
-        personsObject.append(new Person(words[myIndex + 1]))
+        personsObject.append(Person(words[myIndex + 1]))
 
     if 'met' in words:
         myIndex = words.index('met')
         persons.append(words[myIndex + 1])
-        personsObject.append(new Person(words[myIndex + 1]))
+        personsObject.append(Person(words[myIndex + 1]))
         
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
 
         if words[withIndex + 1].lower() == 'my' and words[withIndex + 2] not in persons:
             persons.append(words[withIndex + 2])
-            personsObject.append(new Person(words[withIndex + 2]))
+            personsObject.append(Person(words[withIndex + 2]))
         else:
             personName = words[withIndex + 1]
             personName = personName.capitalize()
             if personName not in persons:
                 persons.append(personName)
-                personsObject.append(new Person(personName))
+                personsObject.append(Person(personName))
 
     if 'to' in words:
         toIndex = words.index('to')
@@ -46,13 +46,13 @@ def findPersonKeywords(words):
         if (words[toIndex - 1].lower() != 'went') and (words[toIndex - 1].lower() != 'how') and (words[toIndex - 1].lower() != 'go') and (words[toIndex - 1].lower() != 'visit'):
             if words[toIndex + 1].lower() == 'my' and words[toIndex + 2] not in persons:
                 persons.append(words[toIndex + 2])
-                personsObject.append(new Person(words[toIndex + 2]))
+                personsObject.append(Person(words[toIndex + 2]))
             else:
                 personName = words[toIndex + 1]
                 personName = personName.capitalize()
                 if personName not in persons:
                     persons.append(personName)
-                    personsObject.append(new Person(personName))
+                    personsObject.append(Person(personName))
             
     return persons
 
@@ -78,7 +78,7 @@ def PersonOrLocation(string):
     
     return {'Persons': findPersonKeywords(words), 'Locations': findLocationKeywords(words)}
 
-
+'''
 while True:
     s = input("\n\nEnter sentence to find the list of person names >>> ")
-    print(PersonOrLocation(s))
+    print(PersonOrLocation(s))'''
