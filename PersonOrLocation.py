@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+print ("\n\n*****\nPersonOrLocation.py\n\nHold on while I'm loading up NLTK (Natural Language Toolkit) external library for Python...\n\t-> If you see an \"NLTK Downloader\" window and this is your first time using NLTK, click on \"all-nltk\" from the list and \"Download\".\n\t\tOtherwise, just close the window.\n*****\n\n")
+
+# WORD-PROCESSING TOOLKIT
+import nltk
+nltk.download()
+
 # Person is an object that stores information of a person 
 class Person:
     def __init__(self, personName):
@@ -17,16 +23,31 @@ def findPersonKeywords(words):
     persons = []
     personsObject = []
 
-    if 'my' in words:
-        myIndex = words.index('my')
-        persons.append(words[myIndex + 1])
-        personsObject.append(Person(words[myIndex + 1]))
+    # Utilizing NLTK library to categorize each word
+    words_and_categories = nltk.pos_tag(words)
 
-    if 'met' in words:
-        myIndex = words.index('met')
-        persons.append(words[myIndex + 1])
-        personsObject.append(Person(words[myIndex + 1]))
-        
+    for word_and_cat in words_and_categories:
+        if word_and_cat[1] == "VBD": # Verb (Action word), in past tense; e.g. took, went, met
+            index = words_and_categories.index(word_and_cat)
+            if words_and_categories[index + 1][1] != "TO" and words_and_categories[index + 1][1] != "RP" and words_and_categories[index + 1][1] != "RB" and (words_and_categories[index][0].lower() != 'did') and words_and_categories[index + 1][1] != "JJ" and ("VB" not in words_and_categories[index + 1][1]): # Preposition "to" AND particle "give UP", "stressed OUT" AND adverbs AND adjectives
+                if words_and_categories[index + 1][1] == "PRP$" and ((words_and_categories[index - 1][0].lower() != 'went') and (words_and_categories[index - 1][0].lower() != 'go') or (words_and_categories[index - 1][0].lower() != 'goes') or (words_and_categories[index - 1][0].lower() != 'visit') or (words_and_categories[index - 1][0].lower() != 'visits') or (words_and_categories[index - 1][0].lower() != 'visited')): # Possessive pronouns; e.g. my, his, hers
+                    entity = words_and_categories[index + 2][0]
+                    if entity not in persons:
+                        persons.append(entity)
+                        personsObject.append(Person(entity))
+
+                elif words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": # if word is not a preposition or determiner
+                    personName = words_and_categories[index + 1][0]
+                    personName = personName[0].upper() + personName[1:]
+                    if personName not in persons:
+                        persons.append(personName)
+                        personsObject.append(Person(personName))
+
+        elif word_and_cat[1] == "NNP" and words_and_categories[words_and_categories.index(word_and_cat) - 1][1] != "IN": # Proper noun; e.g. Ryan, Nat, Eugene, Radhika AND the word before isn't a preposition (the sentence could be "went to KFC on Thursday"; 'Thursday' is a proper noun, 'on' is a preposition)
+            if word_and_cat[0] not in persons:
+                persons.append(word_and_cat[0])
+                personsObject.append(Person(word_and_cat[0]))
+                
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
 
@@ -47,12 +68,6 @@ def findPersonKeywords(words):
             if words[toIndex + 1].lower() == 'my' and words[toIndex + 2] not in persons:
                 persons.append(words[toIndex + 2])
                 personsObject.append(Person(words[toIndex + 2]))
-            else:
-                personName = words[toIndex + 1]
-                personName = personName.capitalize()
-                if personName not in persons:
-                    persons.append(personName)
-                    personsObject.append(Person(personName))
             
     return persons
 
@@ -60,15 +75,25 @@ def findPersonKeywords(words):
 # returns the list of location names in the given list
 def findLocationKeywords(words):
     locations = []
+    words_and_categories = nltk.pos_tag(words)
 
-    if 'to' in words:
-        toIndex = words.index('to')
+    for word_and_cat in words_and_categories: 
+        if word_and_cat[1] == "TO":
+            index = words_and_categories.index(word_and_cat)
 
-        if ((words[toIndex - 1].lower() == 'went') or (words[toIndex - 1].lower() == 'go') or (words[toIndex - 1].lower() == 'goes') or (words[toIndex - 1].lower() == 'visit') or (words[toIndex - 1].lower() == 'visits')) and (words[toIndex - 1].lower() != 'how'):
-            locationName = words[toIndex + 1].capitalize()
-            if locationName not in locations:
-                locations.append(locationName)
-            
+            if ((words_and_categories[index - 1][0].lower() == 'went') or (words_and_categories[index - 1][0].lower() == 'go') or (words_and_categories[index - 1][0].lower() == 'goes') or (words_and_categories[index - 1][0].lower() == 'visit') or (words_and_categories[index - 1][0].lower() == 'visits') or (words_and_categories[index - 1][0].lower() == 'visited')) and (words_and_categories[index - 1][0].lower() != 'how'):
+                if words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": # If next word isn't a preposition nor determiner
+                    locationName = words_and_categories[index + 1][0]
+                    locationName = locationName[0].upper() + locationName[1:]
+                    if locationName not in locations:
+                        locations.append(locationName)
+
+                elif words_and_categories[index + 1][1] == "DT":
+                    locationName = words_and_categories[index + 2][0]
+                    locationName = locationName[0].upper() + locationName[1:]
+                    if locationName not in locations:
+                        locations.append(locationName)
+                    
     return locations
 
 # PersonOrLocation is a function that takes a string (or user's "chat" in this context)
@@ -78,7 +103,6 @@ def PersonOrLocation(string):
     
     return {'Persons': findPersonKeywords(words), 'Locations': findLocationKeywords(words)}
 
-'''
 while True:
     s = input("\n\nEnter sentence to find the list of person names >>> ")
-    print(PersonOrLocation(s))'''
+    print(PersonOrLocation(s))
