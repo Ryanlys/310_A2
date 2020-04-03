@@ -4,7 +4,8 @@ print ("\n\n*****\nPersonOrLocation.py\n\nHold on while I'm loading up NLTK (Nat
 
 # WORD-PROCESSING TOOLKIT
 import nltk
-nltk.download()
+# nltk.download()
+from nltk.corpus import wordnet as wn
 
 # Person is an object that stores information of a person 
 class Person:
@@ -23,6 +24,38 @@ def findPersonKeywords(words):
     persons = []
     personsObject = []
 
+<<<<<<< Local Changes
+<<<<<<< Local Changes
+    # Utilizing NLTK library to categorize each word
+    words_and_categories = nltk.pos_tag(words)
+
+    for word_and_cat in words_and_categories:
+        
+        if word_and_cat[1] == "VBD": # Verb (Action word), in past tense; e.g. took, went, met
+            index = words_and_categories.index(word_and_cat)
+            if words_and_categories[index + 1][1] != "TO" and words_and_categories[index + 1][1] != "RP" and words_and_categories[index + 1][1] != "RB" and (words_and_categories[index][0].lower() != 'did') and words_and_categories[index + 1][1] != "JJ" and ("VB" not in words_and_categories[index + 1][1]): # Preposition "to" AND particle "give UP", "stressed OUT" AND adverbs AND adjectives
+                if words_and_categories[index + 1][1] == "PRP$" and ((words_and_categories[index - 1][0].lower() != 'went') and (words_and_categories[index - 1][0].lower() != 'go') or (words_and_categories[index - 1][0].lower() != 'goes') or (words_and_categories[index - 1][0].lower() != 'visit') or (words_and_categories[index - 1][0].lower() != 'visits') or (words_and_categories[index - 1][0].lower() != 'visited')): # Possessive pronouns; e.g. my, his, hers
+                    entity = words_and_categories[index + 2][0]
+                    if entity not in persons:
+                        persons.append(entity)
+                        personsObject.append(Person(entity))
+
+                elif words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": # if word is not a preposition or determiner
+                    personName = words_and_categories[index + 1][0]
+                    personName = personName[0].upper() + personName[1:]
+                    if personName not in persons:
+                        persons.append(personName)
+                        personsObject.append(Person(personName))
+
+        elif word_and_cat[1] == "NNP" and words_and_categories[words_and_categories.index(word_and_cat) - 1][1] != "IN": # Proper noun; e.g. Ryan, Nat, Eugene, Radhika AND the word before isn't a preposition (the sentence could be "went to KFC on Thursday"; 'Thursday' is a proper noun, 'on' is a preposition)
+            if word_and_cat[0] not in persons:
+                persons.append(word_and_cat[0])
+                personsObject.append(Person(word_and_cat[0]))
+                
+    if 'my' in words:
+        myIndex = words.index('my')
+        persons.append(words[myIndex + 1])
+        
     # Utilizing NLTK library to categorize each word
     words_and_categories = nltk.pos_tag(words)
 
@@ -48,6 +81,7 @@ def findPersonKeywords(words):
                 persons.append(word_and_cat[0])
                 personsObject.append(Person(word_and_cat[0]))
                 
+>>>>>>> External Changes
     if 'with' in words:
         withIndex = words.index('with') # returns the index of the word 'with' in the list of words
 
@@ -71,6 +105,15 @@ def findPersonKeywords(words):
             
     return persons
 
+
+#finds synonyms of words
+def getSynonyms(word):
+    synonyms = []
+    for s in wn.synsets(word):
+        for l in s.lemmas():
+            synonyms.append(l.name())
+    return synonyms
+
 # findLocationKeywords is a function that takes a list of words (or user's "chat" in this context)
 # returns the list of location names in the given list
 def findLocationKeywords(words):
@@ -81,18 +124,20 @@ def findLocationKeywords(words):
         if word_and_cat[1] == "TO":
             index = words_and_categories.index(word_and_cat)
 
-            if ((words_and_categories[index - 1][0].lower() == 'went') or (words_and_categories[index - 1][0].lower() == 'go') or (words_and_categories[index - 1][0].lower() == 'goes') or (words_and_categories[index - 1][0].lower() == 'visit') or (words_and_categories[index - 1][0].lower() == 'visits') or (words_and_categories[index - 1][0].lower() == 'visited')) and (words_and_categories[index - 1][0].lower() != 'how'):
-                if words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": # If next word isn't a preposition nor determiner
-                    locationName = words_and_categories[index + 1][0]
-                    locationName = locationName[0].upper() + locationName[1:]
-                    if locationName not in locations:
-                        locations.append(locationName)
+            for (x in getSynonyms("travel")):
+                if ((words_and_categories[index - 1][0].lower() == x)):
+                    if words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": 
+                        # If next word isn't a preposition nor determiner
+                        locationName = words_and_categories[index + 1][0]
+                        locationName = locationName[0].upper() + locationName[1:]
+                        if locationName not in locations:
+                            locations.append(locationName)
 
-                elif words_and_categories[index + 1][1] == "DT":
-                    locationName = words_and_categories[index + 2][0]
-                    locationName = locationName[0].upper() + locationName[1:]
-                    if locationName not in locations:
-                        locations.append(locationName)
+                        elif words_and_categories[index + 1][1] == "DT":
+                            locationName = words_and_categories[index + 2][0]
+                            locationName = locationName[0].upper() + locationName[1:]
+                            if locationName not in locations:
+                                locations.append(locationName)
                     
     return locations
 
