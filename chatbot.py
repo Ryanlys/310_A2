@@ -1,10 +1,28 @@
 #!/usr/bin/python
 
 '''
-    PLEASE NOTE:
-        ONLY RUNS ON PYTHON 3+.
-        Python 2's GUI library (tkinter) uses a slightly-different library name and hence will crash upon loading 'tkinter' library, if run on Py2.
-'''
+    ### IMPORTANT NOTES: ###
+    
+        - ONLY RUNS ON PYTHON 3+.
+            > Python 2's GUI library (tkinter) uses a slightly-different library name and hence will crash upon loading 'tkinter' library, if run on Py2.
+
+        - INTERNET CONNECTION NEEDED
+            > We're using ```nltk``` external Python library "Natural Language Toolkit" for this project. It is an "open source Python library for Natural Language Processing" or OpenNLP. 
+
+            INSTALLATION:
+                1. Please install ```nltk``` by typing into Windows cmd / UNIX Terminal: ```pip install nltk```
+                2. Execute chatbot.py using Python 3.
+                3. A window popup "NLTK Downloader" will show up. Click on "Download" on the bottom-left corner below the list view UI.
+                4. It's gonna take a little while to download and install (around ~10 minutes), so just hang tight, grab a coffee or popcorn and chill out while you're waiting ;)
+
+        REFERENCES: 
+            - We recognize the developers of ```nltk``` for their development on the toolkit. As mentioned in their documentation, we will credit their work below:
+                Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
+                For more information, please visit: nltk.org
+
+
+    #########################
+'''             
 
 import PersonOrLocation
 import questionBuilder
@@ -65,8 +83,8 @@ btnReply = tkinter.Button(mainWindow, font = font_verdana12, text = "Reply >", c
 for i in range(100):
     listbox.insert(tkinter.END, str(i))
 
-listbox.grid(row = 0, columnspan = 1, rowspan = 2, sticky = "nw")
-scrollbar.grid(row = 0, column = 1, sticky = "nse")
+listbox.grid(row = 0, sticky = "nw")
+scrollbar.grid(row = 0, sticky = "nse")
 textInput.grid(row = 1, column = 0, sticky = "sw")
 btnReply.grid(row = 1, column = 1, sticky = "se")
 
@@ -95,7 +113,7 @@ locations = []
 matchingCategories = []
 
 name = input("\n\nHey there, it's bot. Mind identifying yourself? What should I call you?\n\t> ")
-name = name.lstrip().rstrip().split(" ")[-1] # Extracts the last word in the sentence
+name = name.lstrip().rstrip().split(" ")[-1] # Only extracts the last word in the sentence
 name = name[0].upper() + name[1:]
 sentence = input("Hello " + name + ", how are ya feeling today?\n\t> ")
                       
