@@ -4,7 +4,7 @@ print ("\n\n*****\nPersonOrLocation.py\n\nHold on while I'm loading up NLTK (Nat
 
 # WORD-PROCESSING TOOLKIT
 import nltk
-# nltk.download()
+nltk.download()
 from nltk.corpus import wordnet as wn
 
 # Person is an object that stores information of a person 
