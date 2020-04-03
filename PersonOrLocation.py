@@ -103,6 +103,7 @@ def PersonOrLocation(string):
     
     return {'Persons': findPersonKeywords(words), 'Locations': findLocationKeywords(words)}
 
+'''
 while True:
     s = input("\n\nEnter sentence to find the list of person names >>> ")
-    print(PersonOrLocation(s))
+    print(PersonOrLocation(s))'''
