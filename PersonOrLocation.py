@@ -3,6 +3,7 @@
 print ("\n\n*****\nPersonOrLocation.py\n\nHold on while I'm loading up NLTK (Natural Language Toolkit) external library for Python...\n\t-> If you see an \"NLTK Downloader\" window and this is your first time using NLTK, click on \"all-nltk\" from the list and \"Download\".\n\t\tOtherwise, just close the window.\n*****\n\n")
 
 # WORD-PROCESSING TOOLKIT
+import Chat
 import nltk
 #nltk.download()
 from nltk.corpus import wordnet as wn
@@ -62,7 +63,8 @@ def findPersonKeywords(words):
                 
     if 'my' in words:
         myIndex = words.index('my')
-        persons.append(words[myIndex + 1])
+        if (words[myIndex+1] !=  "roommate" and words[myIndex+1] != "friend" and words[myIndex+1] != "classmate"):
+                    persons.append(words[myIndex + 1])
         
     # Utilizing NLTK library to categorize each word
     words_and_categories = nltk.pos_tag(words)
