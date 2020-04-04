@@ -121,7 +121,7 @@ def findLocationKeywords(words):
     locations = []
     words_and_categories = nltk.pos_tag(words)
     
-    synonyms = getSynonyms("travel")
+    synonyms = getSynonyms(["travel"])
 
     for word_and_cat in words_and_categories: 
         
