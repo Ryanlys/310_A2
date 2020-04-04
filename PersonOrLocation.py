@@ -72,8 +72,9 @@ def determineBranch(words):
             return branch
 
     branch = Chat.getBranch()
-    if not branch:
-        branch = 'general'
+    if branch=="":
+        branch = "general"
+
     return branch
 
 # PersonOrLocation is a function that takes a string (or user's "chat" in this context)

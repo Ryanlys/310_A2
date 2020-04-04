@@ -38,7 +38,7 @@ neutralPlace = [
     "What did you do there? \n >",
     "How was name? \n >",
     "Did you like name? \n >",
-    "Would you recommend it? name\n >",
+    "Would you recommend it? name ?\n >",
     "That sounds niceeee \n >"
 ]
 neutralGen= [
@@ -58,34 +58,34 @@ def response(branch, type, name): #type is person or place
     if branch == 'depressed':
         if type == 'person':
             output = depressedPerson[random.randint(0,len(depressedPerson)-1)]
-            while (output == getLastSentence()):
+            while (output == getLastSentence().split("!!")[0]):
                 output = depressedPerson[random.randint(0,len(depressedPerson)-1)]
-            setLastSentence(output)
+            setLastSentence(output,"!!person")
             return output.replace("name",name)
         else:
             output = depressedPlace[random.randint(0, len(depressedPlace)- 1)]
-            while (output == getLastSentence()):
+            while (output == getLastSentence().split("!!")[0]):
                 output = depressedPlace[random.randint(0, len(depressedPlace) - 1)]
-            setLastSentence(output)
+            setLastSentence(output,"!!place")
             return output
     elif branch == 'neutral':
        if type == 'person':
            output = neutralPerson[random.randint(0, len(neutralPerson) - 1)]
-           while (output == getLastSentence()):
+           while (output == getLastSentence().split("!!")[0]):
                output = neutralPerson[random.randint(0, len(neutralPerson) - 1)]
-           setLastSentence(output)
+           setLastSentence(output,"!!person")
            return output.replace("name",name)
        else:
            output = neutralPlace[random.randint(0, len(neutralPlace) - 1)]
-           while (output == getLastSentence()):
+           while (output == getLastSentence().split("!!")[0]):
                output = neutralPlace[random.randint(0, len(neutralPlace) - 1)]
-           setLastSentence(output)
+           setLastSentence(output,"!!place")
            return output.replace("name",name)
     else:
         output = general[random.randint(0, len(general) - 1)]
-        while (output == getLastSentence()):
+        while (output == getLastSentence().split("!!")[0]):
             output = general[random.randint(0, len(general) - 1)]
-        setLastSentence(output)
+        setLastSentence(output,"")
         return output
 
 def genResponse(branch): #generic response
@@ -93,30 +93,30 @@ def genResponse(branch): #generic response
         output = depressedGen[random.randint(0, len(depressedGen) - 1)]
         while (output == getLastSentence()):
             output = depressedGen[random.randint(0, len(depressedGen) - 1)]
-        setLastSentence(output)
+        #setLastSentence(output)
         return output
     elif branch == 'suicidal':
         output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
         while (output == getLastSentence()):
             output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
-        setLastSentence(output)
+        #setLastSentence(output)
         return output
     elif branch == 'neutral':
         output = neutralGen[random.randint(0, len(neutralGen) - 1)]
         while (output == getLastSentence()):
             output = neutralGen[random.randint(0, len(neutralGen) - 1)]
-        setLastSentence(output)
+        #setLastSentence(output)
         return output
     else:
         output = general[random.randint(0, len(general) - 1)]
         while (output == getLastSentence()):
             output = general[random.randint(0, len(general) - 1)]
-        setLastSentence(output)
+        #setLastSentence(output)
         return output
 
-def setLastSentence(sentence):
+def setLastSentence(sentence,plus):
     global lastSentence
-    lastSentence = sentence
+    lastSentence = sentence+plus
 
 def getLastSentence():
     return lastSentence

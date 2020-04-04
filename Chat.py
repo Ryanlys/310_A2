@@ -8,6 +8,7 @@ stack = []
 
 def Chat(words): #type is person or place
     global stack
+    global branch
     branch = PersonOrLocation.determineBranch(words.split())
     keywords = PersonOrLocation.PersonOrLocation(words)
 
@@ -21,8 +22,10 @@ def Chat(words): #type is person or place
 
 
     for place in keywords[1]:
+        print(place)
         sentence = General.response(branch,'place',place)
         stack.append(sentence)
+        print(stack)
     for person in keywords[0]:
         sentence = General.response(branch,'person',person)
         stack.append(sentence)
