@@ -14,3 +14,9 @@ The chat class calls itself recursively for each identified person or place keyw
 The PersonOrLocation class takes in the user reply and scans for keywords, then determines and returns a list of people and places the user said.
 
 General class contains all the canned responses, and is responsible to randomly selecting a response based on whether the keyword is a person or a place, or a general response that is used to prompt users for more input.
+
+# Members Full Name
+-
+-
+-
+- 
