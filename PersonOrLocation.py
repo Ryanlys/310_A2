@@ -128,22 +128,22 @@ def findLocationKeywords(words):
         if word_and_cat[1] == "TO":
             index = words_and_categories.index(word_and_cat)
                 
-                if (words_and_categories[index - 1][0].lower() in synonyms):
+            if (words_and_categories[index - 1][0].lower() in synonyms):
+                
+                if words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": 
+                    # If next word isn't a preposition nor determiner
+                    locationName = words_and_categories[index + 1][0]
+                    locationName = locationName[0].upper() + locationName[1:]
                     
-                    if words_and_categories[index + 1][1] != "IN" and words_and_categories[index + 1][1] != "DT": 
-                        # If next word isn't a preposition nor determiner
-                        locationName = words_and_categories[index + 1][0]
+                    if locationName not in locations:
+                        locations.append(locationName)
+
+                    elif words_and_categories[index + 1][1] == "DT":
+                        locationName = words_and_categories[index + 2][0]
                         locationName = locationName[0].upper() + locationName[1:]
                         
                         if locationName not in locations:
                             locations.append(locationName)
-
-                        elif words_and_categories[index + 1][1] == "DT":
-                            locationName = words_and_categories[index + 2][0]
-                            locationName = locationName[0].upper() + locationName[1:]
-                            
-                            if locationName not in locations:
-                                locations.append(locationName)
                     
     return locations
 
