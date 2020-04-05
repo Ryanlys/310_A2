@@ -17,6 +17,8 @@ def findPersonKeywords(words):
         if words[withIndex + 1].lower() == 'my' and words[withIndex + 2].lower() != 'him' and words[withIndex + 2].lower() != 'her' and words[withIndex + 2].lower() != 'them':
             if words[withIndex+2] not in persons:
                 persons.append(words[withIndex+2])
+        if words[withIndex+1] not in persons:
+            persons.append(words[withIndex+1])
 
 
     '''if 'to' in words:

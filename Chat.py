@@ -17,7 +17,8 @@ def Chat(words): #type is person or place
         sys.exit()
 
     if(len(keywords[0]) == 0) and (len(keywords[1]) == 0):
-        stack.append(General.genResponse(branch))
+        if len(stack) == 0:
+            stack.append(General.genResponse(branch))
         return
 
 
@@ -27,8 +28,10 @@ def Chat(words): #type is person or place
         stack.append(sentence)
         print(stack)
     for person in keywords[0]:
+        print(person)
         sentence = General.response(branch,'person',person)
         stack.append(sentence)
+        print(stack)
 
 def setBranch(b):
     global branch
