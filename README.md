@@ -17,6 +17,8 @@ The PersonOrLocation class takes in the user reply and scans for keywords, then 
 
 General class contains all the canned responses, and is responsible to randomly selecting a response based on whether the keyword is a person or a place, or a general response that is used to prompt users for more input.
 
+Sentiment class uses Twitter tweets to train the classifier for sentiment analysis. Code is sourced from [here](https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk)
+
 # Additional features implemented
 * Sentiment analysis with NLTK
   * Additional phrases will be added into response based on sentiment of user's last input regarding a specific place or person, which allows for more complex and human like responses to different input.
