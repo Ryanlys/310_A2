@@ -1,6 +1,16 @@
 import Chat
+import nltk
+from nltk.corpus import wordnet as wn
 #!/usr/bin/python
 
+def getSynonyms(words):
+    synonyms = []
+    for word in words:
+        for s in wn.synsets(word):
+            for l in s.lemmas():
+                synonyms.append(l.name())
+    return set(synonyms)
+    
 # findPersonKeywords is a function that takes a list of words (or user's "chat" in this context)
 # returns the list of person names in the given list
 def findPersonKeywords(words):
@@ -33,10 +43,11 @@ def findPersonKeywords(words):
 # returns the list of location names in the given list
 def findLocationKeywords(words):
     locations = []
+    synonyms = getSynonyms(["travel", "went"])
 
     if 'to' in words:
         toIndex = words.index('to')
-        if ((words[toIndex - 1].lower() == 'went') or (words[toIndex - 1].lower() == 'go') or (words[toIndex - 1].lower() == 'goes') or (words[toIndex - 1].lower() == 'visit') or (words[toIndex - 1].lower() == 'visits')) and (words[toIndex - 1].lower() != 'how'):
+        if (words[toIndex - 1].lower() in synonyms):
             if (words[toIndex+1] == "the"):
                 locationName = words[toIndex + 2].capitalize()
                 if locationName not in locations:
@@ -53,9 +64,12 @@ def findLocationKeywords(words):
     return locations
 
 def determineBranch(words):
-    depressedWords = ['stress','stressing','depressed','lonely','sad','unhappy', 'not well', 'unwell', 'miserable', 'upset', 'discouraged','broken-hearted','down', 'glum']
-    neutralWords = ['good','alright','okay', 'fine', 'so-so', 'happy', 'content', 'cheery', 'blessed', 'thrilled']
+    depressedWordsList = ['stress','stressing','depressed','lonely','sad','unhappy', 'not well', 'unwell', 'miserable', 'upset', 'discouraged','broken-hearted','down', 'glum']
+    neutralWordsList = ['good','alright','okay', 'fine', 'so-so', 'happy', 'content', 'cheery', 'blessed', 'thrilled']
 
+    depressedWords = getSynonyms(depressedWordsList)
+    neutralWords = getSynonyms(neutralWordsList)
+    
     if (any(string in words for string in depressedWords)):
         branch = 'depressed'
         return branch

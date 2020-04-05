@@ -48,8 +48,10 @@ neutralGen= [
     "That's nice to know. Have you been to any new restaurants lately? \n >"
 ]
 general = [
-    "Tell me more about it\n >",
-    "What else?\n >"
+    "Hm, can you tell me more about it? \n >",
+    "Go on...\n >",
+    "What happened after that? \n >",
+    "What a story! Can I get a sequel? \n >"
 ]
 global lastSentence
 lastSentence=""
