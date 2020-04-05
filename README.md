@@ -18,14 +18,14 @@ The PersonOrLocation class takes in the user reply and scans for keywords, then 
 General class contains all the canned responses, and is responsible to randomly selecting a response based on whether the keyword is a person or a place, or a general response that is used to prompt users for more input.
 
 # Additional features implemented
-- Sentiment analysis with NLTK
-  - Additional phrases will be added into response based on sentiment of user's last input regarding a specific place or person, which allows for more complex and human like responses to different input.
-- Synonym recognition with WordNet
-- Simple GUI
-  - GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as user input box. 
+* Sentiment analysis with NLTK
+  * Additional phrases will be added into response based on sentiment of user's last input regarding a specific place or person, which allows for more complex and human like responses to different input.
+* Synonym recognition with WordNet
+* Simple GUI
+  * GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as user input box. 
 
 # Members Full Name
--
+- Ryan Lam 54122072
 -
 -
 - 
