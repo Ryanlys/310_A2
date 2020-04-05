@@ -1,6 +1,7 @@
 import Chat
 import nltk
 from nltk.corpus import wordnet as wn
+#nltk.download()
 #!/usr/bin/python
 
 def getSynonyms(words):
@@ -43,11 +44,11 @@ def findPersonKeywords(words):
 # returns the list of location names in the given list
 def findLocationKeywords(words):
     locations = []
-    synonyms = getSynonyms(["travel", "went"])
+    synonyms = getSynonyms(["travel"])
 
     if 'to' in words:
         toIndex = words.index('to')
-        if (words[toIndex - 1].lower() in synonyms):
+        if (words[toIndex - 1].lower() in synonyms or words[toIndex - 1].lower() == 'went'):
             if (words[toIndex+1] == "the"):
                 locationName = words[toIndex + 2].capitalize()
                 if locationName not in locations:
