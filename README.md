@@ -27,7 +27,7 @@ Sentiment class uses Twitter tweets to train the classifier for sentiment analys
   * GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as user input box. 
 
 # Members Full Name
-- Ryan Lam 54122072
--
--
-- 
+* Ryan Lam 54122072
+* Nathania Hendradjaja 34089243
+* 
+*  
