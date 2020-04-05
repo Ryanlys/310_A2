@@ -29,5 +29,5 @@ Sentiment class uses Twitter tweets to train the classifier for sentiment analys
 # Members Full Name
 * Ryan Lam 54122072
 * Nathania Hendradjaja 34089243
-* 
+* Radhika Sharma 94968294
 *  
