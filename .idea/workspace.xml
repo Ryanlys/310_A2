@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bacad198-c7bc-4a29-b0f4-7bfd9f9ef7c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Discord Bots\310_A2\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1a0tnG9dxwZ36FXU5NXqb9ghiEV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="PersonOrLocation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="310_A2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PersonOrLocation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ryanl\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.PersonOrLocation" />
+      <item itemvalue="Python.main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.PersonOrLocation" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bacad198-c7bc-4a29-b0f4-7bfd9f9ef7c4" name="Default Changelist" comment="" />
+      <created>1585886098185</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585886098185</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="522" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585966750557">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="522" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1585966750557" />
+    <state x="799" y="133" key="#main" timestamp="1585966706438">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="799" y="133" key="#main/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1585966706438" />
+    <state width="1362" height="262" key="GridCell.Tab.0.bottom" timestamp="1586044993024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586044993024" />
+    <state width="1362" height="262" key="GridCell.Tab.0.center" timestamp="1586044993024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="262" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586044993024" />
+    <state width="1362" height="262" key="GridCell.Tab.0.left" timestamp="1586044993024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="262" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586044993024" />
+    <state width="1362" height="262" key="GridCell.Tab.0.right" timestamp="1586044993024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="262" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586044993024" />
+    <state width="1362" height="324" key="GridCell.Tab.1.bottom" timestamp="1586043946162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="324" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586043946162" />
+    <state width="1362" height="324" key="GridCell.Tab.1.center" timestamp="1586043946162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="324" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586043946162" />
+    <state width="1362" height="324" key="GridCell.Tab.1.left" timestamp="1586043946162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="324" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586043946162" />
+    <state width="1362" height="324" key="GridCell.Tab.1.right" timestamp="1586043946162">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1362" height="324" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586043946162" />
+    <state x="421" y="159" key="SettingsEditor" timestamp="1586041674787">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="421" y="159" key="SettingsEditor/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1586041674787" />
+  </component>
+</project>

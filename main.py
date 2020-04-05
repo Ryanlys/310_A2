@@ -1,4 +1,4 @@
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import*
 
 import General, PersonOrLocation, Chat, sys, PyQt5, sentiment, random
 from PyQt5.QtWidgets import *
@@ -19,6 +19,7 @@ class Main(QWidget):
     def initUI(self):
         font = QFont()
         font.setPointSize(12)
+        font.setFamily("Rockwell")
         qtRectangle = self.frameGeometry()
         centerPoint = QDesktopWidget().availableGeometry().center()
         qtRectangle.moveCenter(centerPoint)
@@ -26,7 +27,7 @@ class Main(QWidget):
         self.te = QTextEdit()
         self.te.setFont(font)
         self.te.setReadOnly(True)
-        self.te.append("Heya, how are you? \n > ")
+        self.te.append("Heya, how are you? \n >")
         self.le = QLineEdit()
         self.le.setFont(font)
         self.le.setText("You: ")
@@ -40,8 +41,10 @@ class Main(QWidget):
     @pyqtSlot()
     def buttonClicked(self):
         self.te.insertPlainText(" "+self.le.text()[5:])
+        self.te.setAlignment(Qt.AlignRight)
         if General.getLastSentence()=="":
             Chat.Chat(self.le.text()[5:])
+            self.te.setAlignment(Qt.AlignLeft)
             self.te.append(Chat.popStack())
         else:
             print(General.getLastSentence())
@@ -51,21 +54,26 @@ class Main(QWidget):
                         out = negativePlace[random.randint(0,len(negativePlace)-1)]
                         Chat.Chat(self.le.text()[5:])
                         self.te.append(out+Chat.popStack().lower())
+                        self.te.setAlignment(Qt.AlignLeft)
                     else:
                         out = positivePlace[random.randint(0, len(positivePlace) - 1)]
                         Chat.Chat(self.le.text()[5:])
+                        self.te.setAlignment(Qt.AlignLeft)
                         self.te.append(out + Chat.popStack().lower())
                 elif sentiment.classify(self.le.text()[5:]) == "Negative":
                     out = negativePerson[random.randint(0, len(negativePerson) - 1)]
                     Chat.Chat(self.le.text()[5:])
                     self.te.append(out + Chat.popStack().lower())
+                    self.te.setAlignment(Qt.AlignLeft)
                 else:
                     out = positivePerson[random.randint(0, len(positivePerson) - 1)]
                     Chat.Chat(self.le.text()[5:])
                     self.te.append(out + Chat.popStack().lower())
+                    self.te.setAlignment(Qt.AlignLeft)
             else:
                 Chat.Chat(self.le.text()[5:])
                 self.te.append(Chat.popStack())
+                self.te.setAlignment(Qt.AlignLeft)
         self.le.setText("You: ")
 
 
