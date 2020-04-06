@@ -51,7 +51,8 @@ general = [
     "Hm, can you tell me more about it? \n >",
     "Go on...\n >",
     "What happened after that? \n >",
-    "What a story! Can I get a sequel? \n >"
+    "Anything else? \n >",
+    "Have you been to any place else lately? \n >"
 ]
 global lastSentence
 lastSentence=""
