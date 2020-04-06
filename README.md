@@ -27,6 +27,7 @@ Hello! Is a friendly chat bot that is always there to talk to you and listen to 
   
 - Wordnet Synonym Recognition: the agent can now recognize not only keywords that we explicitly specified, but synonyms of those keywords, which helps the agent respond to the user better.
    - Ex. Our code uses synonyms of the word “travel” to detect the word “go”:
+      
       Heya, how are you?
       > good
       That’s nice to know. Have you been to any new restaurants lately?
@@ -35,6 +36,7 @@ Hello! Is a friendly chat bot that is always there to talk to you and listen to 
      
 - Sentiment Analysis Tool
    - Additional phrases will be added into response based on the sentiment of the user's last input regarding a specific place or person, which allows for more complex and human-like responses to different inputs.
+      
       How was Picnic?
       > It was great!
       I’ll definitely check it out, have you been to anywhere else lately? 
