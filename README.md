@@ -16,7 +16,7 @@ Hello! Is a friendly chat bot that is always there to talk to you and listen to 
 * Sentiment class uses Twitter tweets to train the classifier for sentiment analysis. Code is sourced from [here](https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk)
 
 # Additional features implemented
-*GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as a user input box.
+- GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as a user input box.
 
 - Agent can give at least 5 different reasonable responses when user enters something outside of the two topics. We have another branch called “general” that handles responses that don’t fit into the two main branches “depressed” and “neutral”
    - "Hm, can you tell me more about it? \n >"
@@ -25,19 +25,19 @@ Hello! Is a friendly chat bot that is always there to talk to you and listen to 
    - "Anything else? \n >"
    - "Have you been to any place else lately? \n >"
   
-*Wordnet Synonym Recognition: the agent can now recognize not only keywords that we explicitly specified, but synonyms of those keywords, which helps the agent respond to the user better.
-  *Ex. Our code uses synonyms of the word “travel” to detect the word “go”:
+- Wordnet Synonym Recognition: the agent can now recognize not only keywords that we explicitly specified, but synonyms of those keywords, which helps the agent respond to the user better.
+   - Ex. Our code uses synonyms of the word “travel” to detect the word “go”:
       Heya, how are you?
       > good
       That’s nice to know. Have you been to any new restaurants lately?
       > I did go to Picnic 
       How was Picnic?
      
-*Sentiment Analysis Tool
-  *Additional phrases will be added into response based on the sentiment of the user's last input regarding a specific place or person, which allows for more complex and human-like responses to different inputs.
-    How was Picnic?
-    > It was great!
-    I’ll definitely check it out, have you been to anywhere else lately? 
+- Sentiment Analysis Tool
+   - Additional phrases will be added into response based on the sentiment of the user's last input regarding a specific place or person, which allows for more complex and human-like responses to different inputs.
+      How was Picnic?
+      > It was great!
+      I’ll definitely check it out, have you been to anywhere else lately? 
 
 # Members Full Name and Student ID
 * Ryan Lam 54122072
