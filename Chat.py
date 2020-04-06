@@ -1,8 +1,14 @@
-import PersonOrLocation, random, General, sys
+import PersonOrLocation, random, General, sys, main
 
 global branch
 branch=''
+
+global stack
+stack = []
+
 def Chat(words): #type is person or place
+    global stack
+    global branch
     branch = PersonOrLocation.determineBranch(words.split())
     keywords = PersonOrLocation.PersonOrLocation(words)
 
@@ -11,14 +17,21 @@ def Chat(words): #type is person or place
         sys.exit()
 
     if(len(keywords[0]) == 0) and (len(keywords[1]) == 0):
+        if len(stack) == 0:
+            stack.append(General.genResponse(branch))
         return
 
-    for person in keywords[0]:
-        sentence = input(General.response(branch,'person',person))
-        Chat(sentence)
+
     for place in keywords[1]:
-        sentence = input(General.response(branch,'place',place))
-        Chat(sentence)
+        print(place)
+        sentence = General.response(branch,'place',place)
+        stack.append(sentence)
+        print(stack)
+    for person in keywords[0]:
+        print(person)
+        sentence = General.response(branch,'person',person)
+        stack.append(sentence)
+        print(stack)
 
 def setBranch(b):
     global branch
@@ -26,3 +39,6 @@ def setBranch(b):
 
 def getBranch():
     return branch
+
+def popStack():
+    return stack.pop()
