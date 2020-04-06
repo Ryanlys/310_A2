@@ -18,12 +18,12 @@ Hello! Is a friendly chat bot that is always there to talk to you and listen to 
 # Additional features implemented
 *GUI is implemented using PyQt5, with a read-only textedit to store chat log, and a lineedit widget to act as a user input box.
 
-*Agent can give at least 5 different reasonable responses when user enters something outside of the two topics. We have another branch called “general” that handles responses that don’t fit into the two main branches “depressed” and “neutral”
-  *"Hm, can you tell me more about it? \n >"
-  *"Go on...\n >"
-  *"What happened after that? \n >"
-  *"Anything else? \n >"
-  *"Have you been to any place else lately? \n >"
+- Agent can give at least 5 different reasonable responses when user enters something outside of the two topics. We have another branch called “general” that handles responses that don’t fit into the two main branches “depressed” and “neutral”
+   - "Hm, can you tell me more about it? \n >"
+   - "Go on...\n >"
+   - "What happened after that? \n >"
+   - "Anything else? \n >"
+   - "Have you been to any place else lately? \n >"
   
 *Wordnet Synonym Recognition: the agent can now recognize not only keywords that we explicitly specified, but synonyms of those keywords, which helps the agent respond to the user better.
   *Ex. Our code uses synonyms of the word “travel” to detect the word “go”:
