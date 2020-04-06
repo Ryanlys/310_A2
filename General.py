@@ -39,7 +39,7 @@ neutralPlace = [
     "How was name? \n >",
     "Did you like name? \n >",
     "Would you recommend it? name ?\n >",
-    "That sounds niceeee \n >"
+    "That sounds niceeee, how was it? \n >"
 ]
 neutralGen= [
     ":) Tell me more! \n >",
@@ -95,25 +95,25 @@ def genResponse(branch): #generic response
         output = depressedGen[random.randint(0, len(depressedGen) - 1)]
         while (output == getLastSentence()):
             output = depressedGen[random.randint(0, len(depressedGen) - 1)]
-        #setLastSentence(output)
+        setLastSentence(output,"")
         return output
     elif branch == 'suicidal':
         output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
         while (output == getLastSentence()):
             output = suicidalPerson[random.randint(0, len(suicidalPerson) - 1)]
-        #setLastSentence(output)
+        setLastSentence(output,"")
         return output
     elif branch == 'neutral':
         output = neutralGen[random.randint(0, len(neutralGen) - 1)]
         while (output == getLastSentence()):
             output = neutralGen[random.randint(0, len(neutralGen) - 1)]
-        #setLastSentence(output)
+        setLastSentence(output,"")
         return output
     else:
         output = general[random.randint(0, len(general) - 1)]
         while (output == getLastSentence()):
             output = general[random.randint(0, len(general) - 1)]
-        #setLastSentence(output)
+        setLastSentence(output,"")
         return output
 
 def setLastSentence(sentence,plus):
@@ -121,4 +121,5 @@ def setLastSentence(sentence,plus):
     lastSentence = sentence+plus
 
 def getLastSentence():
+    global lastSentence
     return lastSentence

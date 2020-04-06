@@ -4,7 +4,7 @@ import General, PersonOrLocation, Chat, sys, PyQt5, sentiment, random
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
-negativePlace = ["Aw, ", "That sucks to hear, ", "Oof, "]
+negativePlace = ["Aw, that's too bad. ", "That sucks to hear, ", "Oof, "]
 negativePerson = ["That doesn't sound good. ", "Aw, ", "Hmm,"]
 positivePlace = ["That's good to hear, ", "I'll definitely check it out, ", "Cool, "]
 positivePerson = ["Aw,","That's sweet, "]
@@ -41,7 +41,6 @@ class Main(QWidget):
     @pyqtSlot()
     def buttonClicked(self):
         self.te.insertPlainText(" "+self.le.text()[5:])
-        self.te.setAlignment(Qt.AlignRight)
         if General.getLastSentence()=="":
             Chat.Chat(self.le.text()[5:])
             self.te.setAlignment(Qt.AlignLeft)
@@ -54,26 +53,21 @@ class Main(QWidget):
                         out = negativePlace[random.randint(0,len(negativePlace)-1)]
                         Chat.Chat(self.le.text()[5:])
                         self.te.append(out+Chat.popStack().lower())
-                        self.te.setAlignment(Qt.AlignLeft)
                     else:
                         out = positivePlace[random.randint(0, len(positivePlace) - 1)]
                         Chat.Chat(self.le.text()[5:])
-                        self.te.setAlignment(Qt.AlignLeft)
                         self.te.append(out + Chat.popStack().lower())
                 elif sentiment.classify(self.le.text()[5:]) == "Negative":
                     out = negativePerson[random.randint(0, len(negativePerson) - 1)]
                     Chat.Chat(self.le.text()[5:])
                     self.te.append(out + Chat.popStack().lower())
-                    self.te.setAlignment(Qt.AlignLeft)
                 else:
                     out = positivePerson[random.randint(0, len(positivePerson) - 1)]
                     Chat.Chat(self.le.text()[5:])
                     self.te.append(out + Chat.popStack().lower())
-                    self.te.setAlignment(Qt.AlignLeft)
             else:
                 Chat.Chat(self.le.text()[5:])
                 self.te.append(Chat.popStack())
-                self.te.setAlignment(Qt.AlignLeft)
         self.le.setText("You: ")
 
 
